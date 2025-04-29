@@ -22,7 +22,7 @@ import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import { useNavigate } from 'react-router-dom';
 
-const FlavorCategory = ({ title, description, flavors }) => {
+const FlavorCategory = ({ title, description, flavors, icon }) => {
   const theme = useTheme();
   
   return (
@@ -41,17 +41,20 @@ const FlavorCategory = ({ title, description, flavors }) => {
       }}
     >
       <CardContent sx={{ p: 4 }}>
-        <Typography 
-          variant="h5" 
-          component="h3" 
-          sx={{ 
-            color: theme.palette.primary.main,
-            fontWeight: 600,
-            mb: 2,
-          }}
-        >
-          {title}
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+          {icon}
+          <Typography 
+            variant="h5" 
+            component="h3" 
+            sx={{ 
+              ml: 2,
+              color: theme.palette.primary.main,
+              fontWeight: 600,
+            }}
+          >
+            {title}
+          </Typography>
+        </Box>
         <Typography 
           variant="body1" 
           sx={{ 
@@ -70,8 +73,11 @@ const FlavorCategory = ({ title, description, flavors }) => {
                 sx={{ 
                   color: theme.palette.primary.light,
                   fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
               >
+                <span style={{ marginRight: '8px' }}>{flavor.emoji}</span>
                 {flavor.name}
               </Typography>
               <Typography 
@@ -104,14 +110,14 @@ const Products = () => {
       description: "Premium tobacco flavors for those who appreciate traditional tastes.",
       icon: <SmokingRoomsIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "The Duke", description: "Bold Rich American Tobacco" },
-        { name: "Cabana", description: "Everyone Likes a Hand Rolled Cigar" },
-        { name: "RY4", description: "It's Bange: Tobacco with Vanilla Caramel & Almond" },
-        { name: "Tobacco Mix", description: "Three of our Finest Blends" },
-        { name: "Turkish Bourbon", description: "Turkish Tobacco, Bourbon" },
-        { name: "Turkish", description: "A Smooth Turkish Medium Tobacco" },
-        { name: "Ultra Light", description: "A Light Bodied Tobacco" },
-        { name: "Western Tobacco", description: "A Traditional Smooth Western, Tobacco, and Blackberry" }
+        { name: "The Duke", description: "Bold Rich American Tobacco", emoji: "🌿" },
+        { name: "Cabana", description: "Everyone Likes a Hand Rolled Cigar", emoji: "🌴" },
+        { name: "RY4", description: "It's Bange: Tobacco with Vanilla Caramel & Almond", emoji: "🍯" },
+        { name: "Tobacco Mix", description: "Three of our Finest Blends", emoji: "🍂" },
+        { name: "Turkish Bourbon", description: "Turkish Tobacco, Bourbon", emoji: "🥃" },
+        { name: "Turkish", description: "A Smooth Turkish Medium Tobacco", emoji: "🌙" },
+        { name: "Ultra Light", description: "A Light Bodied Tobacco", emoji: "🍃" },
+        { name: "Western Tobacco", description: "A Traditional Smooth Western, Tobacco, and Blackberry", emoji: "🤠" }
       ]
     },
     {
@@ -119,13 +125,13 @@ const Products = () => {
       description: "Refreshing menthol blends for a cool, crisp experience.",
       icon: <AcUnitIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Berry Mint", description: "A Fresh Mix of Berries and Sweet Mint" },
-        { name: "Fire & Ice", description: "Hot & Cold" },
-        { name: "Menthol", description: "Crisp Strong Menthol" },
-        { name: "RY4 + Menthol", description: "Our Finest RY4 Blend Tobacco on ICE" },
-        { name: "Screaming Eagle", description: "Mango Forest, Watermelon Strawberry on ICE" },
-        { name: "Sir Randy", description: "Smooth Peachy Menthol" },
-        { name: "Forbidden Fruit Menthol", description: "Cool Fruity Blend" }
+        { name: "Berry Mint", description: "A Fresh Mix of Berries and Sweet Mint", emoji: "🫐" },
+        { name: "Fire & Ice", description: "Hot & Cold", emoji: "🔥" },
+        { name: "Menthol", description: "Crisp Strong Menthol", emoji: "❄️" },
+        { name: "RY4 + Menthol", description: "Our Finest RY4 Blend Tobacco on ICE", emoji: "🧊" },
+        { name: "Screaming Eagle", description: "Mango Forest, Watermelon Strawberry on ICE", emoji: "🦅" },
+        { name: "Sir Randy", description: "Smooth Peachy Menthol", emoji: "🍑" },
+        { name: "Forbidden Fruit Menthol", description: "Cool Fruity Blend", emoji: "🍎" }
       ]
     },
     {
@@ -133,8 +139,8 @@ const Products = () => {
       description: "Start your day with these breakfast-inspired flavors.",
       icon: <RestaurantIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Berry Crunch", description: "Yellow Cap is Getting Fruity" },
-        { name: "Fruits O's", description: "Circular Cereal with a Fruit Burst" }
+        { name: "Berry Crunch", description: "Yellow Cap is Getting Fruity", emoji: "🥣" },
+        { name: "Fruits O's", description: "Circular Cereal with a Fruit Burst", emoji: "🥐" }
       ]
     },
     {
@@ -142,12 +148,12 @@ const Products = () => {
       description: "Refreshing beverage-inspired flavors.",
       icon: <LocalCafeIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Alabama Slammer", description: "Southern Whiskey Blend" },
-        { name: "Cap'n Coke", description: "Spiced Rum & Cola" },
-        { name: "Coffee & Cigarettes", description: "Classic Coffee Blend" },
-        { name: "The Hanso", description: "Premium Coffee Blend" },
-        { name: "Pina Colada", description: "Tropical Coconut Drink" },
-        { name: "Sweet Apple", description: "Canadian Whiskey and Crisp Green Apple" }
+        { name: "Alabama Slammer", description: "Southern Whiskey Blend", emoji: "🥃" },
+        { name: "Cap'n Coke", description: "Spiced Rum & Cola", emoji: "🥤" },
+        { name: "Coffee & Cigarettes", description: "Classic Coffee Blend", emoji: "☕" },
+        { name: "The Hanso", description: "Premium Coffee Blend", emoji: "🍵" },
+        { name: "Pina Colada", description: "Tropical Coconut Drink", emoji: "🍹" },
+        { name: "Sweet Apple", description: "Canadian Whiskey and Crisp Green Apple", emoji: "🍎" }
       ]
     },
     {
@@ -155,21 +161,21 @@ const Products = () => {
       description: "Fresh and natural fruit flavors.",
       icon: <LocalFloristIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Apple", description: "Perfectly Ripe Red Delicious" },
-        { name: "RY Berry", description: "Mixed Berries, Blueberry and Cream" },
-        { name: "Dragon's Kiss", description: "Strawberry, Juicy Pomegranate, Kiwi, and Melon" },
-        { name: "Dragon's Kiss 2", description: "Dragon Fruit, Strawberry, Jackfruit" },
-        { name: "Lemon Berry Kiss", description: "Lemon, Mixed Berry & Sour" },
-        { name: "Melonious Funk", description: "Mix of Strawberry, Watermelon, and Cantaloupe, with a hint of Cucumber" },
-        { name: "Orgy", description: "Delightful Blend of Melon Berry with hint of Apricot" },
-        { name: "Peach Tea", description: "Sweet Juicy Peach Tea" },
-        { name: "Prickly Pear", description: "Pricklen Pear" },
-        { name: "PTSD", description: "Mellow Layering of Six Different Fruits" },
-        { name: "Screaming Eagle", description: "Sweet Watermelon Strawberry" },
-        { name: "Strawberry Kiwi", description: "A Sweet Mix of Strawberry & Kiwi" },
-        { name: "Sweet William", description: "Strawberry, Kiwi, Watermelon, Mango" },
-        { name: "Watermelon", description: "Strong Juicy Melon" },
-        { name: "West Side", description: "Cranberry Fresh Mango" }
+        { name: "Apple", description: "Perfectly Ripe Red Delicious", emoji: "🍎" },
+        { name: "RY Berry", description: "Mixed Berries, Blueberry and Cream", emoji: "🫐" },
+        { name: "Dragon's Kiss", description: "Strawberry, Juicy Pomegranate, Kiwi, and Melon", emoji: "🐉" },
+        { name: "Dragon's Kiss 2", description: "Dragon Fruit, Strawberry, Jackfruit", emoji: "🐲" },
+        { name: "Lemon Berry Kiss", description: "Lemon, Mixed Berry & Sour", emoji: "🍋" },
+        { name: "Melonious Funk", description: "Mix of Strawberry, Watermelon, and Cantaloupe, with a hint of Cucumber", emoji: "🍈" },
+        { name: "Orgy", description: "Delightful Blend of Melon Berry with hint of Apricot", emoji: "🍑" },
+        { name: "Peach Tea", description: "Sweet Juicy Peach Tea", emoji: "🫖" },
+        { name: "Prickly Pear", description: "Pricklen Pear", emoji: "🌵" },
+        { name: "PTSD", description: "Mellow Layering of Six Different Fruits", emoji: "🎯" },
+        { name: "Screaming Eagle", description: "Sweet Watermelon Strawberry", emoji: "🦅" },
+        { name: "Strawberry Kiwi", description: "A Sweet Mix of Strawberry & Kiwi", emoji: "🍓" },
+        { name: "Sweet William", description: "Strawberry, Kiwi, Watermelon, Mango", emoji: "🥝" },
+        { name: "Watermelon", description: "Strong Juicy Melon", emoji: "🍉" },
+        { name: "West Side", description: "Cranberry Fresh Mango", emoji: "🥭" }
       ]
     },
     {
@@ -177,18 +183,18 @@ const Products = () => {
       description: "Rich, creamy dessert flavors.",
       icon: <IcecreamIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Banana Cream", description: "Creamy Sweet Banana" },
-        { name: "Blackwater", description: "Water Berry Creamy Goodness" },
-        { name: "Blue Hippo", description: "Blueberry & Creamy Dessert" },
-        { name: "F-YEAH", description: "Cinnamon & Cream" },
-        { name: "Phin's Juice", description: "Strawberry, Pineapple & Vanilla Swirl & Cream" },
-        { name: "PHX", description: "Banana Cream, Orange Cream & Blueberry" },
-        { name: "Sensei", description: "Caramel Vanilla Custard" },
-        { name: "Strawnana", description: "Strawberries Banana & Cream" },
-        { name: "Summer Haze", description: "Peaches & Cream, Jackfruit, Strawberries, & Coconut" },
-        { name: "Summer Haze + Coconut", description: "Peaches & Cream, Strawberries & Cream Combined with Coconut" },
-        { name: "Summer Haze + Jackfruit", description: "Peaches & Cream, Strawberries & Coconut Combined with Jackfruit" },
-        { name: "Vanilla Custard", description: "Creamy Vanilla Custard" }
+        { name: "Banana Cream", description: "Creamy Sweet Banana", emoji: "🍌" },
+        { name: "Blackwater", description: "Water Berry Creamy Goodness", emoji: "🌊" },
+        { name: "Blue Hippo", description: "Blueberry & Creamy Dessert", emoji: "🦛" },
+        { name: "F-YEAH", description: "Cinnamon & Cream", emoji: "✨" },
+        { name: "Phin's Juice", description: "Strawberry, Pineapple & Vanilla Swirl & Cream", emoji: "🍍" },
+        { name: "PHX", description: "Banana Cream, Orange Cream & Blueberry", emoji: "🦅" },
+        { name: "Sensei", description: "Caramel Vanilla Custard", emoji: "🥮" },
+        { name: "Strawnana", description: "Strawberries Banana & Cream", emoji: "🍓" },
+        { name: "Summer Haze", description: "Peaches & Cream, Jackfruit, Strawberries, & Coconut", emoji: "🌞" },
+        { name: "Summer Haze + Coconut", description: "Peaches & Cream, Strawberries & Cream Combined with Coconut", emoji: "🥥" },
+        { name: "Summer Haze + Jackfruit", description: "Peaches & Cream, Strawberries & Coconut Combined with Jackfruit", emoji: "🌴" },
+        { name: "Vanilla Custard", description: "Creamy Vanilla Custard", emoji: "🍮" }
       ]
     },
     {
@@ -196,28 +202,28 @@ const Products = () => {
       description: "Sweet treats and candy-inspired flavors.",
       icon: <CakeIcon sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       flavors: [
-        { name: "Andesing", description: "Shocking Ladder with Andes Mint" },
-        { name: "Angry Hobbits", description: "A Spicy Cinnamon Gumball with Apple & Pears" },
-        { name: "Big Daddy", description: "Chewy Sour Candy" },
-        { name: "Big Red 2", description: "Cinnamon Hot Mint Candy" },
-        { name: "Bubba Dubb", description: "Bubble Gum with Strawberry" },
-        { name: "The Chemist", description: "Chewy Strawberry Blend" },
-        { name: "Cotton Candy", description: "Pink Puffy Deliciousness" },
-        { name: "C4", description: "Creamy Peppermint with hints of Chocolate" },
-        { name: "Drunken Chocolate", description: "Caramel Bourbon Chocolate" },
-        { name: "Fat Elvis", description: "Banana, Peanut Butter, Bacon & Honey" },
-        { name: "Gummy Yummy", description: "Strawberry Chewy Goodness" },
-        { name: "JR Grape", description: "Grape Hardy Candy" },
-        { name: "JR Sour Apple", description: "Sour Apple Hard Candy" },
-        { name: "Key Lime Cheesecake", description: "Creamy Tart & Lime Zest" },
-        { name: "Mama's Mint", description: "A Kool Mint Candy" },
-        { name: "Milk & Honey", description: "Leica Mist" },
-        { name: "Peachy O's", description: "Creamy Peach Candy Cans" },
-        { name: "Peppy Mint", description: "A Sweet Peppermint Burst" },
-        { name: "Redy Hots", description: "Cinnamon Fire" },
-        { name: "Skiddles", description: "Candy Ball" },
-        { name: "Strawberry Cheesecake", description: "Creamy Cheesecake with a graham cracker" },
-        { name: "Yeast Infection", description: "Sugar Cookie" }
+        { name: "Andesing", description: "Shocking Ladder with Andes Mint", emoji: "🍫" },
+        { name: "Angry Hobbits", description: "A Spicy Cinnamon Gumball with Apple & Pears", emoji: "🧙" },
+        { name: "Big Daddy", description: "Chewy Sour Candy", emoji: "🍬" },
+        { name: "Big Red 2", description: "Cinnamon Hot Mint Candy", emoji: "🔥" },
+        { name: "Bubba Dubb", description: "Bubble Gum with Strawberry", emoji: "🫧" },
+        { name: "The Chemist", description: "Chewy Strawberry Blend", emoji: "🧪" },
+        { name: "Cotton Candy", description: "Pink Puffy Deliciousness", emoji: "🍭" },
+        { name: "C4", description: "Creamy Peppermint with hints of Chocolate", emoji: "💣" },
+        { name: "Drunken Chocolate", description: "Caramel Bourbon Chocolate", emoji: "🥃" },
+        { name: "Fat Elvis", description: "Banana, Peanut Butter, Bacon & Honey", emoji: "👑" },
+        { name: "Gummy Yummy", description: "Strawberry Chewy Goodness", emoji: "🐻" },
+        { name: "JR Grape", description: "Grape Hardy Candy", emoji: "🍇" },
+        { name: "JR Sour Apple", description: "Sour Apple Hard Candy", emoji: "🍏" },
+        { name: "Key Lime Cheesecake", description: "Creamy Tart & Lime Zest", emoji: "🥧" },
+        { name: "Mama's Mint", description: "A Kool Mint Candy", emoji: "🌿" },
+        { name: "Milk & Honey", description: "Leica Mist", emoji: "🍯" },
+        { name: "Peachy O's", description: "Creamy Peach Candy Cans", emoji: "🍑" },
+        { name: "Peppy Mint", description: "A Sweet Peppermint Burst", emoji: "🌱" },
+        { name: "Redy Hots", description: "Cinnamon Fire", emoji: "🌶️" },
+        { name: "Skiddles", description: "Candy Ball", emoji: "🌈" },
+        { name: "Strawberry Cheesecake", description: "Creamy Cheesecake with a graham cracker", emoji: "🍰" },
+        { name: "Yeast Infection", description: "Sugar Cookie", emoji: "🍪" }
       ]
     }
   ];
@@ -272,6 +278,7 @@ const Products = () => {
                 title={category.title}
                 description={category.description}
                 flavors={category.flavors}
+                icon={category.icon}
               />
             </Grid>
           ))}

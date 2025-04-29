@@ -82,7 +82,7 @@ const Contact = () => {
             </Typography>
             <Typography paragraph>
               <strong>Address:</strong><br />
-              201 west st<br />
+              201 West Street<br />
               Hutto, Texas 78634<br />
               United States
             </Typography>
