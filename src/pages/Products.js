@@ -18,7 +18,6 @@ import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import IcecreamIcon from '@mui/icons-material/Icecream';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
-import LocalBarIcon from '@mui/icons-material/LocalBar';
 import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import { useNavigate } from 'react-router-dom';
